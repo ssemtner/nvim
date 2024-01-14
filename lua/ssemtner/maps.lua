@@ -30,3 +30,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Format keybind
 vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end)
 
+-- Save
+vim.keymap.set("n", "<leader>w", function() vim.cmd("wa") end)
+

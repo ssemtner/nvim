@@ -1,7 +1,7 @@
 return {
   "ThePrimeagen/harpoon",
   branch = "harpoon2",
-  dependancies = {
+  dependencies = {
     'nvim-lua/plenary.nvim',
   },
   config = function()

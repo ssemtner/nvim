@@ -2,11 +2,19 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      { 'williamboman/mason.nvim', config = true },
+      {
+        'williamboman/mason.nvim',
+        opts = {
+          registries = {
+            'github:nvim-java/mason-registry',
+            'github:mason-org/mason-registry',
+          },
+        }
+      },
       'williamboman/mason-lspconfig.nvim',
 
       -- Status updates for LSP
-      { 'j-hui/fidget.nvim',       opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
 
       'folke/neodev.nvim',
     },
@@ -45,7 +53,7 @@ return {
         -- Create format command
         vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
           vim.lsp.buf.format()
-        end, { desc = 'Format current  uffer with LSP' })
+        end, { desc = 'Format current buffer with LSP' })
       end
 
       -- mason-lspconfig requires this order of setup functions
