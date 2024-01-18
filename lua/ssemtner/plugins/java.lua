@@ -7,14 +7,14 @@ return {
         local pkg = mason_reg.get_package("java-debug-adapter")
         local pkg_install_path = pkg:get_install_path()
         local pkg_jar_glob = pkg_install_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar"
-        local pkg_jar = vim.fn.glob(pkg_jar_glob, 1);
+        local pkg_jar = vim.fn.glob(pkg_jar_glob, true);
         return pkg_jar
       end
       local function get_vscode_java_test_bundles()
         local pkg = mason_reg.get_package("java-test")
         local pkg_install_path = pkg:get_install_path()
         local pkg_jars_glob = pkg_install_path .. "/extension/server/*.jar"
-        local pkg_jars = vim.fn.glob(pkg_jars_glob, 1);
+        local pkg_jars = vim.fn.glob(pkg_jars_glob, true);
         local pkg_jars_list = vim.split(pkg_jars, "\n")
         return pkg_jars_list
       end
@@ -22,9 +22,17 @@ return {
         get_adapter_bundle(),
       };
       vim.list_extend(bundles, get_vscode_java_test_bundles())
-      vim.notify("[JAVA bundles] " .. vim.inspect(bundles))
       return bundles
     end
+
+    local function get_jdtls_path()
+      local pkg = require('mason-registry').get_package('jdtls')
+      local pkg_install_path = pkg:get_install_path()
+      return pkg_install_path
+    end
+
+    local jdtls_path = get_jdtls_path()
+
     require('jdtls').start_or_attach({
       cmd = {
 
@@ -44,14 +52,14 @@ return {
 
         -- 💀
         '-jar',
-        '/Users/sjsem/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.600.v20231106-1826.jar',
+        jdtls_path .. '/plugins/org.eclipse.equinox.launcher_1.6.600.v20231106-1826.jar',
         -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
         -- Must point to the                                                     Change this to
         -- eclipse.jdt.ls installation                                           the actual version
 
 
         -- 💀
-        '-configuration', '/Users/sjsem/.local/share/nvim/mason/packages/jdtls/config_mac',
+        '-configuration', jdtls_path ..'/config_mac',
         -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
         -- Must point to the                      Change to one of `linux`, `win` or `mac`
         -- eclipse.jdt.ls installation            Depending on your system.

@@ -2,6 +2,8 @@ return {
   -- Autodetect tabstop and shiftwidth
   'tpope/vim-sleuth',
 
+  'ntpeters/vim-better-whitespace',
+
   {
     'catppuccin/nvim',
     name = 'catppuccin',
@@ -19,6 +21,9 @@ return {
         icons_enabled = false,
         component_separators = '|',
         section_separators = '',
+      },
+      sections = {
+        lualine_x = { 'overseer' },
       },
     },
   },

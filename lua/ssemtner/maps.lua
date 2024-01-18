@@ -28,8 +28,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Format keybind
-vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end)
+vim.keymap.set("n", "<leader>f", function()
+  vim.lsp.buf.format({
+    filter = function(client)
+      -- Disable jdtls formattng because I am using null-ls with google-java-format for that
+      return client.name ~= 'jdtls'
+    end,
+  })
+end)
 
 -- Save
 vim.keymap.set("n", "<leader>w", function() vim.cmd("wa") end)
-

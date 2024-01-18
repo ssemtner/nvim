@@ -6,6 +6,7 @@ return {
         'williamboman/mason.nvim',
         opts = {
           registries = {
+            'github:ssemtner/mason-registry',
             'github:nvim-java/mason-registry',
             'github:mason-org/mason-registry',
           },
@@ -55,6 +56,9 @@ return {
           vim.lsp.buf.format()
         end, { desc = 'Format current buffer with LSP' })
       end
+
+      -- java setup
+      -- require('java').setup()
 
       -- mason-lspconfig requires this order of setup functions
       require('mason').setup()

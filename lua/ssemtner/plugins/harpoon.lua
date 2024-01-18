@@ -16,14 +16,10 @@ return {
     vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
     vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
 
-    -- Quick access to 1-4
-    local function quickSelect(n)
-      vim.keymap.set("n", "<leader>" .. n, function() harpoon:list():select(n) end)
+    -- Quick access to 1-9
+    for i = 1, 9 do
+      vim.keymap.set("n", "<leader>" .. i, function() harpoon:list():select(i) end)
     end
-
-    quickSelect(1)
-    quickSelect(2)
-    quickSelect(3)
-    quickSelect(4)
+      vim.keymap.set("n", "<leader>0", function() harpoon:list():select(10) end)
   end
 }
