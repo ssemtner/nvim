@@ -4,6 +4,8 @@ return {
 
   'ntpeters/vim-better-whitespace',
 
+  'gleam-lang/gleam.vim',
+
   {
     'catppuccin/nvim',
     name = 'catppuccin',
