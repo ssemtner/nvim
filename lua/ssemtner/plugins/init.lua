@@ -6,14 +6,24 @@ return {
 
   'gleam-lang/gleam.vim',
 
+  -- {
+  --   'catppuccin/nvim',
+  --   name = 'catppuccin',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'catppuccin-macchiato'
+  --   end,
+  -- },
+
   {
-    'catppuccin/nvim',
-    name = 'catppuccin',
+    "rose-pine/neovim",
+    name = "rose-pine",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'catppuccin-macchiato'
+      vim.cmd.colorscheme 'rose-pine'
     end,
   },
+
 
   -- Lualine
   {
@@ -46,7 +56,7 @@ return {
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- Wakatime
-  { 'wakatime/vim-wakatime' },
+  -- { 'wakatime/vim-wakatime' },
 
   -- Preview colors
   {

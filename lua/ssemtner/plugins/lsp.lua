@@ -72,7 +72,7 @@ return {
         rust_analyzer = {},
         tsserver = {},
         html = {},
-        ocamllsp = {},
+        -- ocamllsp = {},
 
         lua_ls = {
           Lua = {
