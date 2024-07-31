@@ -25,8 +25,8 @@ return {
       },
       pickers = {
         find_files = {
-          hidden = true
-        }
+          hidden = true,
+        },
       },
     }
 
@@ -50,7 +50,7 @@ return {
 
       -- Find git root from current path
       local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')
-          [1]
+      [1]
       if vim.v.shell_error ~= 0 then
         print 'Not a git repository. Searching on current working directory'
         return cwd
@@ -85,6 +85,41 @@ return {
         prompt_title = 'Live Grep in Open Files',
       }
     end
+
+    local function telescope_git_diff()
+      local list = vim.fn.systemlist 'git diff --name-only'
+
+      if vim.v.shell_error ~= 0 then
+        print 'Not a git repository'
+        return
+      end
+
+      require('telescope.builtin').find_files {
+        prompt_title = 'Git Diff',
+        search_dirs = list,
+      }
+    end
+
+    local function telescope_git_diff_main()
+      -- Check if we are naming the main branch as main or master
+      local branches = vim.fn.system 'git branch -v --no-color'
+      if vim.v.shell_error ~= 0 then
+        print 'Not a git repository'
+        return
+      end
+      local branch = 'main'
+      if string.find(branches, 'master') then
+        branch = 'master'
+      end
+
+      local list = vim.fn.systemlist('git diff --name-only ' .. branch)
+
+      require('telescope.builtin').find_files {
+        prompt_title = 'Git Diff to ' .. branch,
+        search_dirs = list,
+      }
+    end
+
     vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, { desc = '[S]earch [/] in Open Files' })
     vim.keymap.set('n', '<leader>ss', require('telescope.builtin').builtin, { desc = '[S]earch [S]elect Telecope' })
     vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
@@ -93,7 +128,10 @@ return {
     vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
     vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
-    vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+    vim.keymap.set('n', '<leader>si', require('telescope.builtin').diagnostics, { desc = '[S]earch D[i]agnostics' })
     vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+    vim.keymap.set('n', '<leader>sd', telescope_git_diff, { desc = '[S]earch [D]iff' })
+    vim.keymap.set('n', '<leader>sD', telescope_git_diff_main, { desc = '[S]earch [D]iff from main' })
+    vim.keymap.set('n', '<leader>st', ':TodoTelescope<cr>', { desc = '[S]earch [T]odo' })
   end,
 }

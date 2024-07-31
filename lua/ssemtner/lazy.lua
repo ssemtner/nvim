@@ -12,6 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- configure plugins
-require('lazy').setup({
-   import = "ssemtner.plugins",
-}, {})
+require('lazy').setup('ssemtner.plugins', {
+  change_detection = { notify = false },
+})

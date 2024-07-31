@@ -16,14 +16,13 @@ return {
   -- },
 
   {
-    "rose-pine/neovim",
-    name = "rose-pine",
+    'rose-pine/neovim',
+    name = 'rose-pine',
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'rose-pine'
     end,
   },
-
 
   -- Lualine
   {
@@ -67,7 +66,23 @@ return {
         'scss',
         'javascript',
         'html',
-      }
-    }
+      },
+    },
+  },
+
+  {
+    'mistricky/codesnap.nvim',
+    build = 'make',
+    opts = {
+      watermark = '',
+      code_font_family = 'JetBrains Mono',
+      bg_theme = 'grape',
+    },
+  },
+
+  {
+    'folke/todo-comments.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {},
   },
 }
