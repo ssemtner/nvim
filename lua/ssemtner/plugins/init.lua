@@ -7,11 +7,19 @@ return {
   'gleam-lang/gleam.vim',
 
   {
-    'catppuccin/nvim',
-    name = 'catppuccin',
+    'rose-pine/neovim',
+    name = 'rose-pine',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'catppuccin-macchiato'
+      require('rose-pine').setup({
+        variant = 'main',
+        styles = {
+          bold = true,
+          italic = true,
+          transparency = true,
+        },
+      })
+      vim.cmd.colorscheme 'rose-pine'
     end,
   },
 
@@ -60,4 +68,14 @@ return {
       }
     }
   },
+
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  }
 }

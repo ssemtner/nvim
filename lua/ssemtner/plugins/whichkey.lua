@@ -1,5 +1,7 @@
 return {
   'folke/which-key.nvim',
+  -- FIXME: this is a bypass for that annoying checkhealth message on launch
+  commit = '4433e5ec9a507e5097571ed55c02ea9658fb268a',
   opts = {},
   config = function(opts)
     require('which-key').setup(opts)
