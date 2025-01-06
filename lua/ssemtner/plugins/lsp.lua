@@ -66,13 +66,21 @@ return {
 
       -- Configure enabled language servers
       local servers = {
-        clangd = {},
+        clangd = {
+          cmd = {
+            "clangd",
+            "--offset-encoding=utf-16",
+          },
+        },
         gopls = {},
         pyright = {},
         rust_analyzer = {},
         tsserver = {},
         html = {},
         ocamllsp = {},
+        tinymist = {
+          filetypes = { 'typst' },
+        },
 
         lua_ls = {
           Lua = {
@@ -82,12 +90,14 @@ return {
         },
       }
 
+      require('lspconfig').gleam.setup({})
+
       -- Setup neovim lua configuration
       require('neodev').setup()
 
       -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+      capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 
       -- Ensure the servers above are installed
       local mason_lspconfig = require 'mason-lspconfig'
@@ -103,6 +113,7 @@ return {
             on_attach = on_attach,
             settings = servers[server_name],
             filetypes = (servers[server_name] or {}).filetypes,
+            cmd = (servers[server_name] or {}).cmd,
           }
         end,
       }

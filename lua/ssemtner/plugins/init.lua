@@ -4,8 +4,6 @@ return {
 
   'ntpeters/vim-better-whitespace',
 
-  'gleam-lang/gleam.vim',
-
   {
     'rose-pine/neovim',
     name = 'rose-pine',
@@ -19,26 +17,10 @@ return {
           transparency = true,
         },
       })
-      vim.cmd.colorscheme 'rose-pine'
+      vim.cmd.colorscheme('rose-pine')
     end,
   },
 
-  -- Lualine
-  {
-    'nvim-lualine/lualine.nvim',
-    opts = {
-      options = {
-        icons_enabled = false,
-        component_separators = '|',
-        section_separators = '',
-      },
-      sections = {
-        lualine_x = { 'overseer' },
-      },
-    },
-  },
-
-  -- This errors for some reason
   -- Indentation guides on blank lines
   {
     -- Add indentation guides even on blank lines
@@ -49,9 +31,6 @@ return {
       require('ibl').setup()
     end,
   },
-
-  -- Use gc to coment visual selections
-  { 'numToStr/Comment.nvim', opts = {} },
 
   -- Wakatime
   { 'wakatime/vim-wakatime' },
@@ -70,8 +49,9 @@ return {
   },
 
   {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    'folke/todo-comments.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    event = 'VimEnter',
     opts = {
       -- your configuration comes here
       -- or leave it empty to use the default settings
