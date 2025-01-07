@@ -75,7 +75,7 @@ return {
         gopls = {},
         pyright = {},
         rust_analyzer = {},
-        tsserver = {},
+        -- tsserver = {},
         html = {},
         ocamllsp = {},
         tinymist = {
