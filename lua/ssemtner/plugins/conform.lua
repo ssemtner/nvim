@@ -19,6 +19,7 @@ return {
       lua = { 'stylua' },
       python = { 'isort', 'black' },
       rust = { 'rustfmt' },
+      go = { 'gofmt' },
     }
   }
 }

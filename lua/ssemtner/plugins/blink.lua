@@ -18,6 +18,8 @@ return {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
 
+    signature = { enabled = true },
+
     completion = {
       menu = {
         draw = {
