@@ -10,7 +10,7 @@ return {
     priority = 1000,
     config = function()
       require('rose-pine').setup({
-        variant = 'main',
+        variant = 'dawn',
         styles = {
           bold = true,
           italic = true,

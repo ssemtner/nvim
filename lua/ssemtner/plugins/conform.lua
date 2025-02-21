@@ -20,6 +20,15 @@ return {
       python = { 'isort', 'black' },
       rust = { 'rustfmt' },
       go = { 'gofmt' },
+      c = { 'clang_format' },
+      javascript = { 'prettier' },
+      typescript = { 'prettier' },
+      typescriptreact = { 'prettier' },
+    },
+    formatters = {
+      clang_format = {
+        prepend_args = { '--style=file', '--fallback-style=LLVM' },
+      }
     }
   }
 }
