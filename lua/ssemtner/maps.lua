@@ -38,3 +38,5 @@ end)
 
 -- Save
 vim.keymap.set("n", "<leader>w", function() vim.cmd("wa") end)
+
+vim.keymap.set("n", "<leader>dl", vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })

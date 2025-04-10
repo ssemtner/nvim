@@ -4,6 +4,8 @@ return {
 
   'ntpeters/vim-better-whitespace',
 
+  'ggml-org/llama.vim',
+
   {
     'rose-pine/neovim',
     name = 'rose-pine',

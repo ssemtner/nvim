@@ -24,6 +24,7 @@ return {
       javascript = { 'prettier' },
       typescript = { 'prettier' },
       typescriptreact = { 'prettier' },
+      json = { 'prettier' },
     },
     formatters = {
       clang_format = {
