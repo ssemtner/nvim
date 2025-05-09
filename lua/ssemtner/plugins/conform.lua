@@ -25,6 +25,9 @@ return {
       typescript = { 'prettier' },
       typescriptreact = { 'prettier' },
       json = { 'prettier' },
+      nix = { 'alejandra' },
+      systemverilog = { 'verible' },
+      typst = {'typstyle'},
     },
     formatters = {
       clang_format = {

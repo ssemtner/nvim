@@ -6,6 +6,6 @@ return {
     open_mapping = [[<leader>tt]],
     insert_mappings = false,
     direction = 'float',
-    highlights = require("rose-pine.plugins.toggleterm"),
+    -- highlights = require("rose-pine.plugins.toggleterm"),
   }
 }

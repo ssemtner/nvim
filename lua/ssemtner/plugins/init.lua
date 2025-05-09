@@ -6,20 +6,32 @@ return {
 
   'ggml-org/llama.vim',
 
+  -- {
+  --   'rose-pine/neovim',
+  --   name = 'rose-pine',
+  --   priority = 1000,
+  --   config = function()
+  --     require('rose-pine').setup({
+  --       -- variant = 'dawn',
+  --       styles = {
+  --         bold = true,
+  --         italic = true,
+  --         transparency = true,
+  --       },
+  --     })
+  --     vim.cmd.colorscheme('rose-pine')
+  --   end,
+  -- },
+
   {
-    'rose-pine/neovim',
-    name = 'rose-pine',
+    'catppuccin/nvim',
+    name = 'catppuccin',
     priority = 1000,
     config = function()
-      require('rose-pine').setup({
-        variant = 'dawn',
-        styles = {
-          bold = true,
-          italic = true,
-          transparency = true,
-        },
-      })
-      vim.cmd.colorscheme('rose-pine')
+      require('catppuccin').setup {
+        transparent_background = true,
+      }
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
 
