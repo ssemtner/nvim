@@ -46,9 +46,6 @@ return {
     end,
   },
 
-  -- Wakatime
-  { 'wakatime/vim-wakatime' },
-
   -- Preview colors
   {
     'NvChad/nvim-colorizer.lua',

@@ -77,10 +77,10 @@ return {
         rust_analyzer = {},
         -- tsserver = {},
         html = {},
-        ocamllsp = {},
-        tinymist = {
-          filetypes = { 'typst' },
-        },
+        -- ocamllsp = {},
+        -- tinymist = {
+        --   filetypes = { 'typst' },
+        -- },
 
         lua_ls = {
           Lua = {
