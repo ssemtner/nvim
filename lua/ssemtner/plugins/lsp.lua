@@ -90,14 +90,20 @@ return {
         },
       }
 
+      -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+
       require('lspconfig').gleam.setup({})
+      require('lspconfig').sourcekit.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        filetypes = { "swift" }
+      }
 
       -- Setup neovim lua configuration
       require('neodev').setup()
 
-      -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 
       -- Ensure the servers above are installed
       local mason_lspconfig = require 'mason-lspconfig'

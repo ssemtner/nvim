@@ -6,6 +6,26 @@ return {
 
   'ggml-org/llama.vim',
 
+  {
+    "kawre/leetcode.nvim",
+    build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
+    dependencies = {
+      -- include a picker of your choice, see picker section for more details
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    config = function()
+      require('leetcode').setup()
+
+      vim.keymap.set("n", "<leader>lcl", ":Leet list<CR>", { desc = "Leetcode list" })
+      vim.keymap.set("n", "<leader>lcr", ":Leet run<CR>", { desc = "Leetcode run" })
+      vim.keymap.set("n", "<leader>lcs", ":Leet submit<CR>", { desc = "Leetcode submit" })
+      vim.keymap.set("n", "<leader>lcc", ":Leet console<CR>", { desc = "Leetcode console" })
+      vim.keymap.set("n", "<leader>lch", ":Leet hints<CR>", { desc = "Leetcode hints" })
+      vim.keymap.set("n", "<leader>lcL", ":Leet lang<CR>", { desc = "Leetcode lang" })
+    end
+  },
+
   -- {
   --   'rose-pine/neovim',
   --   name = 'rose-pine',

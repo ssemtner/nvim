@@ -5,6 +5,14 @@ return {
 
     require('mini.surround').setup()
 
+    require('mini.notify').setup {
+      window = {
+        -- For transparency to work
+        winblend = 0,
+      }
+    }
+
+
     local statusline = require 'mini.statusline'
 
     statusline.setup { use_icons = vim.g.have_nerd_font }

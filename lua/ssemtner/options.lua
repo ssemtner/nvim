@@ -7,9 +7,6 @@ vim.g.have_nerd_font = true
 -- Highlight on search
 vim.opt.hlsearch = false
 
--- Enable line numbers
-vim.opt.number = true
-
 -- Enable mouse mode
 vim.opt.mouse = 'a'
 
@@ -50,3 +47,25 @@ vim.opt.scrolloff = 10
 
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- Dynamic line numbers except in insert mode
+vim.opt.number = true
+vim.api.nvim_create_autocmd(
+  { "BufEnter", "FocusGained", "InsertLeave", "WinEnter" },
+  { pattern = "*", command = "if &nu && mode() != 'i' | set rnu | endif", }
+)
+vim.api.nvim_create_autocmd(
+  { "BufLeave", "FocusLost", "InsertEnter", "WinLeave" },
+  { pattern = "*", command = "if &nu | set nornu | endif", }
+)
+
+-- Show a split pane with substitution preview
+vim.opt.inccommand = "split"
+
+-- Folding
+vim.opt.foldmethod = "indent"
+vim.opt.foldlevel = 4
+
+-- Spelling
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
