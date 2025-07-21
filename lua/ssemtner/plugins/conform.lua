@@ -28,6 +28,8 @@ return {
       nix = { 'alejandra' },
       systemverilog = { 'verible' },
       typst = {'typstyle'},
+      html = {'prettier'},
+      htmldjango = {'prettier'},
     },
     formatters = {
       clang_format = {
