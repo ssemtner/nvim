@@ -7,6 +7,29 @@ return {
   'ggml-org/llama.vim',
 
   {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    priority = 49,
+    opts = {
+      preview = {
+        enable = true,
+        preview = {
+          modes = { "i", "n", "no", "c" },
+          hybrid_modes = { "i" },
+        },
+      }
+    },
+  },
+
+  {
+    "3rd/image.nvim",
+    build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
+    opts = {
+      processor = "magick_cli",
+    }
+  },
+
+  {
     "kawre/leetcode.nvim",
     build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
     dependencies = {

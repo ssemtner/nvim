@@ -2,7 +2,9 @@ return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    "OXY2DEV/markview.nvim",
   },
+  lazy = false,
   build = ':TSUpdate',
   config = function()
     -- Defer to improve startup time
