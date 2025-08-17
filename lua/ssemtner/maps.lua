@@ -11,8 +11,8 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 vim.diagnostic.config {
-  virtual_lines = true,
-  virtual_text = false,
+  -- virtual_lines = true,
+  virtual_text = true,
   underline = true
 }
 

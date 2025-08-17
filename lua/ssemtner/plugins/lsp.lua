@@ -73,7 +73,7 @@ return {
           },
         },
         gopls = {},
-        pyright = {},
+        basedpyright = {},
         rust_analyzer = {},
         -- tsserver = {},
         html = {},
