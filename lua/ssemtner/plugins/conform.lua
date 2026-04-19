@@ -27,13 +27,20 @@ return {
       json = { 'prettier' },
       nix = { 'alejandra' },
       systemverilog = { 'verible' },
-      typst = {'typstyle'},
-      html = {'prettier'},
-      htmldjango = {'prettier'},
+      typst = { 'typstyle' },
+      haskell = { 'ormolu' },
+      html = { 'prettier' },
+      htmldjango = { 'prettier' },
+      lean = { "reformatlean" },
     },
     formatters = {
       clang_format = {
         prepend_args = { '--style=file', '--fallback-style=LLVM' },
+      },
+      reformatlean = {
+        command = "/Users/sjsem/Developer/reformat-lean",
+        args = { "-s", "$FILENAME" },
+        stdin = true,
       }
     }
   }

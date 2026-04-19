@@ -2,27 +2,23 @@ return {
   -- Autodetect tabstop and shiftwidth
   'tpope/vim-sleuth',
 
-  'ntpeters/vim-better-whitespace',
-
   'ggml-org/llama.vim',
+  -- { 'glacambre/firenvim', build = ":call firenvim#install(0)" },
 
   {
-    "OXY2DEV/markview.nvim",
-    lazy = false,
-    priority = 49,
-    opts = {
-      preview = {
-        enable = true,
-        preview = {
-          modes = { "i", "n", "no", "c" },
-          hybrid_modes = { "i" },
-        },
-      }
+    'chomosuke/typst-preview.nvim',
+    ft = "typst",
+    version = '1.*',
+    opts = {},
+    keys = {
+      { "<leader>tps", "<cmd>TypstPreview<cr>",     ft = "typst", desc = "Start Typst Preview" },
+      { "<leader>tpe", "<cmd>TypstPreviewStop<cr>", ft = "typst", desc = "End Typst Preview" },
     },
   },
 
   {
     "3rd/image.nvim",
+    enabled = false,
     build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
     opts = {
       processor = "magick_cli",
@@ -49,34 +45,49 @@ return {
     end
   },
 
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    priority = 1000,
+    config = function()
+      require('rose-pine').setup({
+        -- variant = 'dawn',
+        styles = {
+          bold = true,
+          italic = true,
+          transparency = false,
+        },
+      })
+      vim.cmd.colorscheme('rose-pine')
+    end,
+  },
+
   -- {
-  --   'rose-pine/neovim',
-  --   name = 'rose-pine',
+  --   'catppuccin/nvim',
+  --   name = 'catppuccin',
   --   priority = 1000,
   --   config = function()
-  --     require('rose-pine').setup({
-  --       -- variant = 'dawn',
-  --       styles = {
-  --         bold = true,
-  --         italic = true,
-  --         transparency = true,
-  --       },
-  --     })
-  --     vim.cmd.colorscheme('rose-pine')
+  --     require('catppuccin').setup {
+  --       transparent_background = true,
+  --     }
+  --     vim.cmd.colorscheme("catppuccin")
   --   end,
   -- },
 
-  {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    priority = 1000,
-    config = function()
-      require('catppuccin').setup {
-        transparent_background = true,
-      }
-      vim.cmd.colorscheme("catppuccin")
-    end,
-  },
+  -- {
+  --   "ellisonleao/gruvbox.nvim",
+  --   priority = 1000,
+  --   opts = {
+  --     contrast = "hard",
+  --     palette_overrides = {
+  --       light4 = "#665c54", -- base04
+  --     },
+  --   },
+  --   config = function()
+  --     vim.o.background = "light"
+  --     vim.cmd.colorscheme("gruvbox")
+  --   end
+  -- },
 
   -- Indentation guides on blank lines
   {

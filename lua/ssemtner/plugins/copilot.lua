@@ -9,9 +9,9 @@ return {
       pattern = vim.fn.expand('~') .. '/developer/vh/*',
       command = 'Copilot disable',
     })
-    vim.api.nvim_create_autocmd({ 'bufenter' }, {
-      pattern = '*',
-      command = 'Copilot disable',
-    })
+    -- vim.api.nvim_create_autocmd({ 'bufenter' }, {
+    --   pattern = '*',
+    --   command = 'Copilot disable',
+    -- })
   end,
 }

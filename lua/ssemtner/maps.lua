@@ -44,3 +44,6 @@ end)
 
 -- Save
 vim.keymap.set("n", "<leader>w", function() vim.cmd("wa") end)
+
+-- I hate this one so just kill it
+vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')

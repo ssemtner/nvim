@@ -12,6 +12,8 @@ return {
       }
     }
 
+    require('mini.splitjoin').setup()
+    require('mini.trailspace').setup()
 
     local statusline = require 'mini.statusline'
 

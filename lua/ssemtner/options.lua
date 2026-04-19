@@ -65,3 +65,8 @@ vim.opt.inccommand = "split"
 -- Folding
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 4
+
+-- spell
+-- https://johncodes.com/archive/2023/02-25-nvim-spell/
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
