@@ -51,15 +51,19 @@ return {
     priority = 1000,
     config = function()
       require('rose-pine').setup({
-        -- variant = 'dawn',
         styles = {
           bold = true,
           italic = true,
           transparency = false,
         },
       })
-      vim.cmd.colorscheme('rose-pine')
+      vim.cmd.colorscheme("rose-pine")
     end,
+  },
+
+  {
+    "f-person/auto-dark-mode.nvim",
+    opts = {}
   },
 
   -- {
