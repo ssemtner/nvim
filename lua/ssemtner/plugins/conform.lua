@@ -1,47 +1,41 @@
 return {
-  'stevearc/conform.nvim',
-  event = { 'BufWritePre' },
-  cmd = { 'ConformInfo' },
+  "stevearc/conform.nvim",
+  event = { "BufWritePre" },
+  cmd = { "ConformInfo" },
   keys = {
     {
-      '<leader>f',
+      "<leader>f",
       function()
-        require('conform').format { async = true, lsp_format = 'fallback' }
+        require("conform").format({ async = true, lsp_format = "fallback" })
       end,
-      mode = '',
-      desc = '[F]ormat'
+      mode = "",
+      desc = "[F]ormat",
     },
   },
   opts = {
     notify_on_error = true,
     format_on_save = false,
     formatters_by_ft = {
-      lua = { 'stylua' },
-      python = { 'isort', 'black' },
-      rust = { 'rustfmt' },
-      go = { 'gofmt' },
-      c = { 'clang_format' },
-      javascript = { 'prettier' },
-      typescript = { 'prettier' },
-      typescriptreact = { 'prettier' },
-      json = { 'prettier' },
-      nix = { 'alejandra' },
-      systemverilog = { 'verible' },
-      typst = { 'typstyle' },
-      haskell = { 'ormolu' },
-      html = { 'prettier' },
-      htmldjango = { 'prettier' },
-      lean = { "reformatlean" },
+      lua = { "stylua" },
+      python = { "isort", "black" },
+      rust = { "rustfmt" },
+      go = { "gofmt" },
+      c = { "clang_format" },
+      javascript = { "prettier" },
+      typescript = { "prettier" },
+      typescriptreact = { "prettier" },
+      json = { "prettier" },
+      nix = { "alejandra" },
+      systemverilog = { "verible" },
+      typst = { "typstyle" },
+      haskell = { "ormolu" },
+      html = { "prettier" },
+      htmldjango = { "prettier" },
     },
     formatters = {
       clang_format = {
-        prepend_args = { '--style=file', '--fallback-style=LLVM' },
+        prepend_args = { "--style=file", "--fallback-style=LLVM" },
       },
-      reformatlean = {
-        command = "/Users/sjsem/Developer/reformat-lean",
-        args = { "-s", "$FILENAME" },
-        stdin = true,
-      }
-    }
-  }
+    },
+  },
 }

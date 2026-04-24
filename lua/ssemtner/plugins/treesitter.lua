@@ -1,8 +1,8 @@
 return {
-  'nvim-treesitter/nvim-treesitter',
-  branch = 'main',
+  "nvim-treesitter/nvim-treesitter",
+  branch = "main",
   lazy = false,
-  build = ':TSUpdate',
+  build = ":TSUpdate",
   -- config = function()
   --   -- Defer to improve startup time
   --   vim.defer_fn(function()

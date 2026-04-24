@@ -1,26 +1,26 @@
 return {
-  'saghen/blink.cmp',
+  "saghen/blink.cmp",
 
-  dependencies = 'rafamadriz/friendly-snippets',
+  dependencies = "rafamadriz/friendly-snippets",
 
-  version = '*',
+  version = "*",
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
     keymap = {
-      preset = 'default',
-      ['<C-CR>'] = { 'select_and_accept' },
-      ['<C-j>'] = { 'select_next' },
-      ['<C-k>'] = { 'select_prev' },
+      preset = "default",
+      ["<C-CR>"] = { "select_and_accept" },
+      ["<C-j>"] = { "select_next" },
+      ["<C-k>"] = { "select_prev" },
     },
 
     appearance = {
       use_nvim_cmp_as_default = true,
-      nerd_font_variant = 'mono'
+      nerd_font_variant = "mono",
     },
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = { "lsp", "path", "snippets", "buffer" },
     },
 
     signature = { enabled = true },
@@ -32,17 +32,17 @@ return {
             kind_icon = {
               ellipsis = false,
               text = function(ctx)
-                local kind_icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
+                local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
                 return kind_icon
               end,
               highlight = function(ctx)
-                local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+                local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
                 return hl
               end,
-            }
-          }
-        }
-      }
-    }
-  }
+            },
+          },
+        },
+      },
+    },
+  },
 }

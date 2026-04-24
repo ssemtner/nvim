@@ -1,22 +1,15 @@
 return {
-  'echasnovski/mini.nvim',
+  "echasnovski/mini.nvim",
   config = function()
-    require('mini.ai').setup { n_lines = 500 }
+    require("mini.ai").setup({ n_lines = 500 })
 
-    require('mini.surround').setup()
+    require("mini.surround").setup()
 
-    require('mini.notify').setup {
-      window = {
-        -- For transparency to work
-        winblend = 0,
-      }
-    }
+    require("mini.splitjoin").setup()
+    require("mini.trailspace").setup()
 
-    require('mini.splitjoin').setup()
-    require('mini.trailspace').setup()
+    local statusline = require("mini.statusline")
 
-    local statusline = require 'mini.statusline'
-
-    statusline.setup { use_icons = vim.g.have_nerd_font }
+    statusline.setup({ use_icons = vim.g.have_nerd_font })
   end,
 }

@@ -1,21 +1,21 @@
 return {
   {
-    'neovim/nvim-lspconfig',
+    "neovim/nvim-lspconfig",
     branch = "master",
     dependencies = {
       {
-        'williamboman/mason.nvim',
+        "williamboman/mason.nvim",
         opts = {
           registries = {
-            'github:ssemtner/mason-registry',
-            'github:nvim-java/mason-registry',
-            'github:mason-org/mason-registry',
+            "github:ssemtner/mason-registry",
+            "github:nvim-java/mason-registry",
+            "github:mason-org/mason-registry",
           },
         },
       },
-      'williamboman/mason-lspconfig.nvim',
-      { 'j-hui/fidget.nvim',  opts = {} },
-      { 'folke/lazydev.nvim', ft = 'lua', opts = {} },
+      "williamboman/mason-lspconfig.nvim",
+      { "j-hui/fidget.nvim", opts = {} },
+      { "folke/lazydev.nvim", ft = "lua", opts = {} },
     },
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -24,11 +24,11 @@ return {
           local bufnr = args.buf
 
           local map = function(keys, func, desc)
-            vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
+            vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
           end
 
-          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+          map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+          map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
           -- map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
           -- map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -37,19 +37,23 @@ return {
           -- map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
           -- map('<leader>ws', require('telescope.builtin').lsp_workspace_symbols, '[W]orkspace [S]ymbols')
 
-          map('K', vim.lsp.buf.hover, 'Hover Documentation')
-          map('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+          map("K", vim.lsp.buf.hover, "Hover Documentation")
+          map("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
           -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-          if client.name == 'clangd' then
-            map('<leader>H', '<cmd>LspClangdSwitchSourceHeader<cr>', 'Switch Source/[H]eader')
+          if client.name == "clangd" then
+            map("<leader>H", "<cmd>LspClangdSwitchSourceHeader<cr>", "Switch Source/[H]eader")
           end
-        end
+        end,
       })
 
       local servers = {
         clangd = {
-          cmd = { 'clangd', '--offset-encoding=utf-16', "--query-driver=/nix/store/*/bin/clang,/nix/store/*/bin/clang++", },
+          cmd = {
+            "clangd",
+            "--offset-encoding=utf-16",
+            "--query-driver=/nix/store/*/bin/clang,/nix/store/*/bin/clang++",
+          },
         },
         gopls = {},
         basedpyright = {},
@@ -65,7 +69,7 @@ return {
         },
       }
 
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
 
       for name, config in pairs(servers) do
         config.capabilities = capabilities
@@ -74,11 +78,11 @@ return {
 
       vim.lsp.enable(vim.tbl_keys(servers))
 
-      local mason_lspconfig = require('mason-lspconfig')
+      local mason_lspconfig = require("mason-lspconfig")
 
-      mason_lspconfig.setup {
+      mason_lspconfig.setup({
         ensure_installed = vim.tbl_keys(servers),
-      }
+      })
     end,
   },
 }
