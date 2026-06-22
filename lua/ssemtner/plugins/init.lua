@@ -2,7 +2,7 @@ return {
   -- Autodetect tabstop and shiftwidth
   "tpope/vim-sleuth",
 
-  "ggml-org/llama.vim",
+  -- "ggml-org/llama.vim",
   -- { 'glacambre/firenvim', build = ":call firenvim#install(0)" },
 
   {
